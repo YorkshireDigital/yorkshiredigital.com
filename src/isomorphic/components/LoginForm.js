@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
 
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
@@ -9,29 +8,30 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import Divider from 'material-ui/lib/divider';
 
-import { login } from '../actions/authActions';
-import { validateLogin } from '../validation/authValidation';
-
-class Login extends Component {
+class LoginForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    login: PropTypes.func.isRequired,
-    validationErrors: PropTypes.object
-  }
-
-  _onSubmit(props) {
-    this.props.login(props);
+    error: PropTypes.object,
+    submitting: PropTypes.bool.isRequired
   }
 
   render() {
-    const { fields: { username, password }, handleSubmit, validationErrors } = this.props;
+    const {
+      fields: { username, password },
+      handleSubmit,
+      error,
+      submitting
+    } = this.props;
 
-    const usernameError = username.error || validationErrors && validationErrors.username;
-    const passwordError = password.error || validationErrors && validationErrors.password;
+    console.log('ERROR => ', error);
+
+    const usernameError = username.error || error && error.username;
+    const passwordError = password.error || error && error.password;
+    const globalError = error && error.global;
 
     return (
-      <form onSubmit={handleSubmit(this._onSubmit.bind(this))}>
+      <form onSubmit={handleSubmit}>
         <Card zDepth={2}>
           <CardTitle title="Social Log in" subtitle="Log in using one of these providers" />
           <CardActions>
@@ -46,9 +46,11 @@ class Login extends Component {
             <TextField floatingLabelText="Password" name="password" type="password" {...password}
               errorText={password.touched && passwordError }
             />
+            { globalError && <p style={{ color: '#f44336' }}>{globalError}</p>}
           </CardText>
           <CardActions>
-            <RaisedButton label="Login" primary fullWidth type="submit" />
+            { submitting && <RaisedButton label="Login" disabled fullWidth type="submit" /> }
+            { !submitting && <RaisedButton label="Login" primary fullWidth type="submit" /> }
           </CardActions>
         </Card>
       </form>
@@ -56,19 +58,4 @@ class Login extends Component {
   }
 }
 
-const validate = (values) => {
-  const errors = validateLogin(values.username, values.password, values.email);
-  return errors || {};
-};
-
-function mapStateToProps(state) {
-  const { auth } = state;
-  const { validationErrors } = auth;
-  return { validationErrors };
-}
-
-export default reduxForm({
-  form: 'RegisterForm',
-  fields: ['username', 'password'],
-  validate
-}, mapStateToProps, { login })(Login);
+export default LoginForm;

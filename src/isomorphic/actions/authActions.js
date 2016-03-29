@@ -1,10 +1,8 @@
 import { push } from 'react-router-redux';
 
-import { register as registerApi, login as loginApi } from '../../client/api-lib/user';
+import { register as registerApi } from '../../client/api-lib/user';
 
-export const LOGIN_STARTED = 'LOGIN_STARTED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAILED = 'LOGIN_FAILED';
 
 export const REGISTER_STARTED = 'REGISTER_STARTED';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -14,47 +12,13 @@ export const REGISTER_FAILED = 'REGISTER_FAILED';
  * LOGIN ACTIONS
  */
 
-function requestLogin(user) {
-  return {
-    type: LOGIN_STARTED,
-    user
-  };
-}
-
-function successfulLogin(user, response) {
+export function loginSuccess(response) {
   return dispatch => {
     dispatch({
       type: LOGIN_SUCCESS,
-      user,
       token: response
     });
     dispatch(push('/'));
-  };
-}
-
-function failedLogin(user, response) {
-  return {
-    type: LOGIN_FAILED,
-    user,
-    errors: response.errors
-  };
-}
-
-function finishedLogin(user, response) {
-  if (response.loginSuccess) {
-    return successfulLogin(user, response);
-  }
-  return failedLogin(user, response);
-}
-
-export function login(props) {
-  const user = props;
-  return dispatch => {
-    dispatch(requestLogin(user));
-    loginApi(user).then(response => {
-      localStorage.setItem('id_token', response.token);
-      dispatch(finishedLogin(user, response));
-    });
   };
 }
 

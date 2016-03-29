@@ -56,14 +56,15 @@ const authController = (function build() {
         ] }
       }).then((user) => {
         if (!user) {
-          reply(Boom.unauthorized('Login failed'));
+          reply(Boom.unauthorized('Login unsuccessful'));
+          return;
         }
         bcrypt.compare(password, user.password, (err, isValid) => {
           if (isValid) {
             const token = _generateToken({ id: user.id, username: user.username, email: user.email });
             reply({ token: token.token });
           } else {
-            reply(Boom.unauthorized('Login failed'));
+            reply(Boom.unauthorized('Login unsuccessful'));
           }
         });
       });
