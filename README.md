@@ -7,7 +7,7 @@ Bringing Yorkshire's digital community together.
 
 This application uses MySql to persist it's state. You will need to have an instance running locally, be it installed locally or [running via docker](https://hub.docker.com/r/mysql/mysql-server/).
 
-Once installed you will need to set the details in [/src/server/config/db-config](https://github.com/yorkshiredigital/yorkshiredigital.com/tree/master/src/server/config/db-config).
+Once installed you will need to set the details in [/src/server/config/db-config](https://github.com/YorkshireDigital/yorkshiredigital.com/blob/master/src/server/config/db_config.js).
 
 ## Installation
 
