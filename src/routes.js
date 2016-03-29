@@ -4,7 +4,7 @@ import AppContainer from './isomorphic/containers/AppContainer';
 import Header from './isomorphic/components/Header';
 import Home from './isomorphic/components/Home';
 import Login from './isomorphic/containers/LoginContainer';
-import Register from './isomorphic/components/Register';
+import Register from './isomorphic/containers/RegisterContainer';
 
 /**
  * The React Routes for both the server and the client.

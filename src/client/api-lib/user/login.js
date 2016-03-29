@@ -1,7 +1,7 @@
 import { post } from '../core/api';
 import { validateLogin } from '../../../isomorphic/validation/authValidation';
 
-export function login(details, successHandler) {
+export function login(details) {
   return new Promise((resolve, reject) => {
     const errors = validateLogin(details.username, details.password);
     if (errors.failed) {
@@ -13,12 +13,7 @@ export function login(details, successHandler) {
       password: details.password
     })
     .then((response) => {
-      if (successHandler) {
-        successHandler({
-          token: response.data.token
-        });
-      }
-      resolve();
+      resolve(response.data);
     })
     .catch((error) => {
       reject({ _error: { global: error.data.message } });

@@ -2,20 +2,12 @@ import axios from 'axios';
 
 import config from '../../config/app';
 
-function _apiResponse(success, payload) {
-  return {
-    successful: success,
-    data: payload.data
-  };
-}
-
 function status(response) {
   if (response.status >= 200 && response.status < 300) {
-    const res = _apiResponse(true, response);
-    return Promise.resolve(res);
+    return Promise.resolve(response);
   }
   if (response.status === 400 || response.status === 401) {
-    return Promise.resolve(_apiResponse(false, response));
+    return Promise.resolve(response);
   }
   return Promise.reject(new Error(response.status + response.statusText));
 }

@@ -24,8 +24,6 @@ class LoginForm extends Component {
       submitting
     } = this.props;
 
-    console.log('ERROR => ', error);
-
     const usernameError = username.error || error && error.username;
     const passwordError = password.error || error && error.password;
     const globalError = error && error.global;
