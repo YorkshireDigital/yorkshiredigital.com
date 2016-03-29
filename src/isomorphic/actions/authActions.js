@@ -63,7 +63,7 @@ export function register(props) {
     dispatch(requestRegister(user));
     registerApi(user)
       .then(response => {
-        localStorage.setItem('id_token', response.token);
+        // localStorage.setItem('id_token', response.token);
         return dispatch(finishedRegister(user, response));
       });
   };

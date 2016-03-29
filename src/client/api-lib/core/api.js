@@ -34,7 +34,7 @@ function mapHeaders(headers, options) {
 }
 
 function getHeaders(options) {
-  const token = localStorage.getItem('id_token') || null;
+  const token = ''; // localStorage.getItem('id_token') || null;
 
   const headers = {
     'Content-Type': 'application/json',
