@@ -55,7 +55,7 @@ function _setupRoutes(server) {
   		<html lang='en-us'>
   			<head>
   				<meta charset='utf-8'>
-  				<title>Hapi Universal Redux</title>
+  				<title>YorkshireDigital</title>
   				<link rel='shortcut icon' href='/favicon.ico'>
           <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
   			</head>
