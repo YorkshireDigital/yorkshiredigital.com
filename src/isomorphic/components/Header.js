@@ -1,0 +1,105 @@
+import React, { cloneElement, Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+
+import Toolbar from 'material-ui/lib/toolbar/toolbar';
+import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
+import FlatButton from 'material-ui/lib/flat-button';
+
+/*
+ * Main view colors.
+ */
+const colors = {
+  white: '#FFFFFF',
+  pink: '#D381C3',
+  blue: '#6FB3D2',
+  green: '#A1C659',
+  darkGrey: '#2A2F3A',
+  lightGrey: '#4F5A65'
+};
+/**
+ * Main view styles.
+ */
+const styles = {
+  base: {
+    fontFamily: 'sans-serif',
+    color: colors.white,
+    padding: '10px 30px 30px',
+    width: '380px',
+    margin: '0 auto 10px',
+    background: 'white'
+  },
+  link: {
+    color: colors.white,
+    textDecoration: 'none',
+  },
+  navLink: {
+    fontFamily: 'sans-serif',
+    color: colors.lightGrey,
+    textDecoration: 'none',
+    padding: '0 30px'
+  },
+  nav: {
+    height: 20,
+    width: '600px',
+    margin: '10px auto 0',
+    padding: '10px 30px 30px',
+    color: 'white',
+    textTransform: 'uppercase'
+  },
+  list: {
+    display: 'inline-block',
+    listStyle: 'none',
+  },
+  feature: {
+    color: colors.pink,
+  },
+  github: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    border: 0,
+  },
+  avatar: {
+    borderRadius: '50%',
+    width: 32,
+    height: 32,
+    margin: '0 2px 2px 0',
+  },
+};
+
+/**
+ * Main component
+ */
+class Header extends Component {
+  static propTypes = {
+    children: PropTypes.object,
+    isAuthenticated: PropTypes.bool
+  }
+
+  render() {
+    return (
+		<div>
+      <Toolbar style={{ background: colors.white }}>
+        <ToolbarGroup firstChild float="left" >
+          <FlatButton label="Home" containerElement={<Link to="/" activeClassName="active" />} linkButton />
+        </ToolbarGroup>
+        <ToolbarGroup lastChild float="right">
+          {!this.props.isAuthenticated && <FlatButton label="Log in" containerElement={<Link to="/login" activeClassName="active" />} />}
+          {!this.props.isAuthenticated && <FlatButton label="Register" containerElement={<Link to="/register" activeClassName="active" />} />}
+        </ToolbarGroup>
+      </Toolbar>
+			<div style={styles.base}>
+				{ cloneElement(this.props.children, Object.assign({}, { styles, colors })) }
+			</div>
+		</div>);
+  }
+}
+
+function mapStateToProps(state) {
+  const { auth } = state;
+  const { isAuthenticated } = auth;
+  return { isAuthenticated };
+}
+
+export default connect(mapStateToProps, null)(Header);
