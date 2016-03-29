@@ -3,10 +3,10 @@ import { reduxForm } from 'redux-form';
 import { registerSuccess } from '../actions/authActions';
 import { validateRegister } from '../validation/authValidation';
 import RegisterForm from '../components/RegisterForm';
-import { register as registerApi } from '../../client/api-lib/user';
+import { register } from '../../client/api-lib/user';
 
 const submit = (values, dispatch) =>
-  registerApi(values)
+  register(values)
     .then(response => {
       // localStorage.setItem('id_token', response.token);
       return dispatch(registerSuccess(response));
