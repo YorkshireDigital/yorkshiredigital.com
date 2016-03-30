@@ -41,8 +41,7 @@ class RegisterForm extends Component {
           { globalError && <p style={{ color: '#f44336' }}>{globalError}</p>}
           </CardText>
         <CardActions>
-          { submitting && <RaisedButton label="Register" disabled fullWidth type="submit" /> }
-          { !submitting && <RaisedButton label="Register" primary fullWidth type="submit" /> }
+          <RaisedButton label="Register" disabled={submitting} primary fullWidth type="submit" />
         </CardActions>
       </Card>
     </form>

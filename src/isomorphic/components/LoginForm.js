@@ -47,8 +47,7 @@ class LoginForm extends Component {
             { globalError && <p style={{ color: '#f44336' }}>{globalError}</p>}
           </CardText>
           <CardActions>
-            { submitting && <RaisedButton label="Login" disabled fullWidth type="submit" /> }
-            { !submitting && <RaisedButton label="Login" primary fullWidth type="submit" /> }
+            <RaisedButton label="Login" disabled={submitting} primary fullWidth type="submit" />
           </CardActions>
         </Card>
       </form>
