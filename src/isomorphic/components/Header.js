@@ -1,6 +1,6 @@
 import React, { cloneElement, Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { isAuthenticated, getCurrentUser } from '../utils/authHelper';
 
 import Toolbar from 'material-ui/lib/toolbar/toolbar';
 import ToolbarGroup from 'material-ui/lib/toolbar/toolbar-group';
@@ -78,6 +78,9 @@ class Header extends Component {
   }
 
   render() {
+    const loggedIn = isAuthenticated();
+    const currentUser = getCurrentUser();
+
     return (
 		<div>
       <Toolbar style={{ background: colors.white }}>
@@ -85,8 +88,10 @@ class Header extends Component {
           <FlatButton label="Home" containerElement={<Link to="/" activeClassName="active" />} linkButton />
         </ToolbarGroup>
         <ToolbarGroup lastChild float="right">
-          {!this.props.isAuthenticated && <FlatButton label="Log in" containerElement={<Link to="/login" activeClassName="active" />} />}
-          {!this.props.isAuthenticated && <FlatButton label="Register" containerElement={<Link to="/register" activeClassName="active" />} />}
+          {!loggedIn && <FlatButton label="Log in" containerElement={<Link to="/login" activeClassName="active" />} />}
+          {!loggedIn && <FlatButton label="Register" containerElement={<Link to="/register" activeClassName="active" />} />}
+          {loggedIn && currentUser && <FlatButton label={`@${currentUser.username}`} containerElement={<Link to="/account" activeClassName="active" />} />}
+          {loggedIn && <FlatButton label="Log out" containerElement={<Link to="/logout" activeClassName="active" />} />}
         </ToolbarGroup>
       </Toolbar>
 			<div style={styles.base}>
@@ -96,10 +101,4 @@ class Header extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { auth } = state;
-  const { isAuthenticated } = auth;
-  return { isAuthenticated };
-}
-
-export default connect(mapStateToProps, null)(Header);
+export default Header;

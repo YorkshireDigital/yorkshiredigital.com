@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cookie from 'react-cookie';
 
 import config from '../../config/app';
 
@@ -26,7 +27,7 @@ function mapHeaders(headers, options) {
 }
 
 function getHeaders(options) {
-  const token = ''; // localStorage.getItem('id_token') || null;
+  const token = cookie.load('token');
 
   const headers = {
     'Content-Type': 'application/json',

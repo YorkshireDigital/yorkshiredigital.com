@@ -1,5 +1,6 @@
 import { reduxForm } from 'redux-form';
 
+import { setAuthToken } from '../utils/authHelper';
 import { loginSuccess } from '../actions/authActions';
 import { validateLogin } from '../validation/authValidation';
 import LoginForm from '../components/LoginForm';
@@ -8,7 +9,7 @@ import { login } from '../../client/api-lib/user';
 const submit = (values, dispatch) =>
   login(values)
     .then(response => {
-      // localStorage.setItem('id_token', response.token);
+      setAuthToken(response.token);
       return dispatch(loginSuccess(response));
     });
 

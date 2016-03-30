@@ -1,7 +1,8 @@
 import { REGISTER_SUCCESS, LOGIN_SUCCESS } from '../actions/authActions';
+
 const initialState = {
-  token: undefined,
-  isAuthenticated: false // localStorage && !(localStorage.getItem('id_token') === null)
+  token: '',
+  isAuthenticated: false
 };
 
 export default function authReducer(state = initialState, action) {

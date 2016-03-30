@@ -8,6 +8,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux';
+import cookie from 'react-cookie';
 
 import configureStore from './store.js';
 import RadiumContainer from './isomorphic/containers/RadiumContainer';
@@ -28,11 +29,18 @@ function _setupRoutes(server) {
   // Set up controller routes
   server.route(controllers.config);
 
+  server.ext('onRequest', (request, reply) => {
+    console.log('COOKIE', request.headers.cookie);
+    cookie.setRawCookie(request.headers.cookie);
+    return reply.continue();
+  });
+
   // Catch dynamic requests here to fire-up React Router.
   server.ext('onPreResponse', (request, reply) => {
     if (typeof request.response.statusCode !== 'undefined') {
       return reply.continue();
     }
+
     match({ routes, location: request.path }, (error, redirectLocation, renderProps) => {
       if (redirectLocation) {
         reply.redirect(redirectLocation.pathname + redirectLocation.search);

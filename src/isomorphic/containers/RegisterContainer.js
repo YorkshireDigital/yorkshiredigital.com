@@ -1,5 +1,6 @@
 import { reduxForm } from 'redux-form';
 
+import { setAuthToken } from '../utils/authHelper';
 import { registerSuccess } from '../actions/authActions';
 import { validateRegister } from '../validation/authValidation';
 import RegisterForm from '../components/RegisterForm';
@@ -8,7 +9,7 @@ import { register } from '../../client/api-lib/user';
 const submit = (values, dispatch) =>
   register(values)
     .then(response => {
-      // localStorage.setItem('id_token', response.token);
+      setAuthToken(response.token);
       return dispatch(registerSuccess(response));
     });
 
