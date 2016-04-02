@@ -23,7 +23,7 @@
     "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
     "watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
     "production": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production npm run start",
-    "staging": "npm run build && node ./dist/server.js",
+    "staging": "npm run build && npm start",
     "dev": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\"",
     "postinstall": "webpack -p --config configs/webpack.client.js"
   },

@@ -10,7 +10,7 @@ const dbConfig = {
     port: 3306,
     models: 'src/server/schema/**/*.js'
   },
-  staging: {
+  production: {
     database: process.env.DATABASE_NAME,
     user: process.env.DATABASE_USER,
     pass: process.env.DATABASE_PASSWORD,
