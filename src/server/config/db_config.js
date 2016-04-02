@@ -1,3 +1,5 @@
+/* global DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, DATABASE_HOST */
+
 const dbConfig = {
   development: {
     database: 'yorkshire_digital',
@@ -8,9 +10,14 @@ const dbConfig = {
     port: 3306,
     models: 'src/server/schema/**/*.js'
   },
-  test: {
-  },
-  production: {
+  staging: {
+    database: process.env.DATABASE_NAME,
+    user: process.env.DATABASE_USER,
+    pass: process.env.DATABASE_PASSWORD,
+    dialect: 'mysql',
+    host: process.env.DATABASE_HOST,
+    port: 3306,
+    models: 'src/server/schema/**/*.js'
   }
 };
 
