@@ -22,7 +22,7 @@ const dbConfig = {
 };
 
 const env = process.env.NODE_ENV || 'development';
-
-console.log('DB_CONFIG 👾', dbConfig[env]);
+console.log('NODE_ENV => ', process.env.NODE_ENV);
+console.log('DB_CONFIG 👾=> ', dbConfig[env]);
 
 module.exports = dbConfig[env];
