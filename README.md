@@ -29,7 +29,7 @@ Make sure you're using Node >= 4.0.0.
 
 ## Project Architecture
 
-This is an isomorphic react application. The main libraries used are:
+This is an universal react application. The main libraries used are:
 
  - [Redux](https://github.com/reactjs/redux) - state management
  - [React Router](https://github.com/reactjs/react-router) - Client side routing

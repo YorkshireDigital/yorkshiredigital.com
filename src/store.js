@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 // import persistState from 'redux-localstorage';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
-import rootReducer from './isomorphic/reducers';
-import DevTools from './isomorphic/utils/DevTools';
+import rootReducer from './universal/reducers';
+import DevTools from './universal/utils/DevTools';
 
 export default function (initialState, history) {
   const finalCreateStore = compose(
@@ -15,9 +15,9 @@ export default function (initialState, history) {
   const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {
-		// Enable Webpack hot module replacement for isomorphic/reducers
-    module.hot.accept('./isomorphic/reducers', () => {
-      const { reducer: nextReducer } = require('./isomorphic/reducers/index');
+		// Enable Webpack hot module replacement for universal/reducers
+    module.hot.accept('./universal/reducers', () => {
+      const { reducer: nextReducer } = require('./universal/reducers/index');
       store.replaceReducer(nextReducer);
     });
   }

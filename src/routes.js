@@ -1,10 +1,10 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
-import AppContainer from './isomorphic/containers/AppContainer';
-import Header from './isomorphic/components/Header';
-import Home from './isomorphic/components/Home';
-import Login from './isomorphic/containers/LoginContainer';
-import Register from './isomorphic/containers/RegisterContainer';
+import AppContainer from './universal/containers/AppContainer';
+import Header from './universal/components/Header';
+import Home from './universal/components/Home';
+import Login from './universal/containers/LoginContainer';
+import Register from './universal/containers/RegisterContainer';
 
 /**
  * The React Routes for both the server and the client.

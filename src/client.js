@@ -4,7 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import configureStore from './store.js';
 import { Provider } from 'react-redux';
 import routes from './routes';
-import RadiumContainer from './isomorphic/containers/RadiumContainer';
+import RadiumContainer from './universal/containers/RadiumContainer';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 const store = configureStore(window.__INITIAL_STATE__);

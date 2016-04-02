@@ -1,5 +1,5 @@
 import { put } from '../core/api';
-import { validateRegister } from '../../../isomorphic/validation/authValidation';
+import { validateRegister } from '../../../universal/validation/authValidation';
 
 export function register(user) {
   return new Promise((resolve, reject) => {

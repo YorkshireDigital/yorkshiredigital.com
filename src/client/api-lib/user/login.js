@@ -1,5 +1,5 @@
 import { post } from '../core/api';
-import { validateLogin } from '../../../isomorphic/validation/authValidation';
+import { validateLogin } from '../../../universal/validation/authValidation';
 
 export function login(details) {
   return new Promise((resolve, reject) => {

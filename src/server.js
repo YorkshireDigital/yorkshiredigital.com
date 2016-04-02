@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import cookie from 'react-cookie';
 
 import configureStore from './store.js';
-import RadiumContainer from './isomorphic/containers/RadiumContainer';
+import RadiumContainer from './universal/containers/RadiumContainer';
 import routesContainer from './routes';
 import config from './server/config/app';
 import controllers from './server/config/routes';

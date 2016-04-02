@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import config from '../config/app';
-import { validateRegister, validateLogin } from '../../isomorphic/validation/authValidation';
+import { validateRegister, validateLogin } from '../../universal/validation/authValidation';
 
 const authController = (function build() {
   function _generateToken(payload) {
