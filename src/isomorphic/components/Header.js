@@ -83,20 +83,22 @@ class Header extends Component {
 
     return (
 		<div>
-      <Toolbar style={{ background: colors.white }}>
-        <ToolbarGroup firstChild float="left" >
-          <FlatButton label="Home" containerElement={<Link to="/" activeClassName="active" />} linkButton />
-        </ToolbarGroup>
-        <ToolbarGroup lastChild float="right">
-          {!loggedIn && <FlatButton label="Log in" containerElement={<Link to="/login" activeClassName="active" />} />}
-          {!loggedIn && <FlatButton label="Register" containerElement={<Link to="/register" activeClassName="active" />} />}
-          {loggedIn && currentUser && <FlatButton label={`@${currentUser.username}`} containerElement={<Link to="/account" activeClassName="active" />} />}
-          {loggedIn && <FlatButton label="Log out" containerElement={<Link to="/logout" activeClassName="active" />} />}
-        </ToolbarGroup>
-      </Toolbar>
-			<div style={styles.base}>
-				{ cloneElement(this.props.children, Object.assign({}, { styles, colors })) }
-			</div>
+      <div style={{ maxWidth: 960, marginLeft: 'auto', marginRight: 'auto' }}>
+        <Toolbar style={{ background: colors.white }}>
+          <ToolbarGroup firstChild float="left" >
+            <Link to="/" activeClassName="active" style={{ background: 'url(sprite-global.svg) 0 0 no-repeat', width: 230, height: 70, margin: 10 }} />
+          </ToolbarGroup>
+          <ToolbarGroup lastChild float="right">
+            {!loggedIn && <FlatButton label="Log in" containerElement={<Link to="/login" activeClassName="active" />} />}
+            {!loggedIn && <FlatButton label="Register" containerElement={<Link to="/register" activeClassName="active" />} />}
+            {loggedIn && currentUser && <FlatButton label={`@${currentUser.username}`} containerElement={<Link to="/account" activeClassName="active" />} />}
+            {loggedIn && <FlatButton label="Log out" containerElement={<Link to="/logout" activeClassName="active" />} />}
+          </ToolbarGroup>
+        </Toolbar>
+        <div style={styles.base}>
+          { cloneElement(this.props.children, Object.assign({}, { styles, colors })) }
+        </div>
+      </div>
 		</div>);
   }
 }
