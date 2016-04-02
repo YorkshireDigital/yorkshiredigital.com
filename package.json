@@ -18,7 +18,7 @@
     "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --harmony\" ./dist/server.js",
     "build-server": "webpack --colors --display-error-details --config configs/webpack.server.js",
     "build-client": "webpack --colors --display-error-details --config configs/webpack.client.js",
-    "build": "concurrently --kill-others \"npm run build-server\" \"npm run build-client\"",
+    "build": "npm run build-server && npm run build-client",
     "watch-server": "webpack --watch --verbose --colors --display-error-details --config configs/webpack.server-watch.js",
     "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
     "watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
