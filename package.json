@@ -98,6 +98,6 @@
     "webpack-node-externals": "^1.0.0"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": "5.2.0"
   }
 }
