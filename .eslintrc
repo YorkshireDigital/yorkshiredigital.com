@@ -3,7 +3,8 @@
   "parser": "babel-eslint",
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "mocha": true
   },
   "rules": {
     "max-len": [2, 200, 4],
@@ -19,7 +20,8 @@
     "indent": [2, 2, {"SwitchCase": 1}],
     "no-console": 0,
     "no-alert": 0,
-    "no-multi-spaces": 0
+    "no-multi-spaces": 0,
+    "no-unused-expressions" : 0
   },
   "plugins": [
     "react", "import"

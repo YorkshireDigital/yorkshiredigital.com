@@ -11,7 +11,8 @@
   "keywords": [],
   "main": "dist/server.js",
   "scripts": {
-    "test": "",
+    "test": "mocha --compilers js:babel-register --recursive",
+    "test:watch": "npm test -- --watch",
     "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --harmony\" ./dist/server.js",
     "build-server": "webpack --colors --display-error-details --config configs/webpack.server.js",
     "build-client": "webpack --colors --display-error-details --config configs/webpack.client.js",
@@ -22,6 +23,11 @@
     "production": "cross-env NODE_ENV=production npm run build && cross-env NODE_ENV=production npm run start",
     "dev": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\"",
     "postinstall": "webpack -p --config configs/webpack.client.js"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
   },
   "dependencies": {
     "axios": "^0.9.1",
@@ -67,6 +73,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.0.0",
+    "babel-register": "^6.7.2",
+    "chai": "^3.5.0",
     "concurrently": "^2.0.0",
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.1.0",
@@ -75,6 +83,7 @@
     "eslint-plugin-react": "^4.2.1",
     "json-loader": "^0.5.4",
     "just-wait": "1.0.5",
+    "mocha": "^2.4.5",
     "redux-devtools": "^3.1.1",
     "redux-devtools-dock-monitor": "^1.1.0",
     "redux-devtools-log-monitor": "^1.0.5",
