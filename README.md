@@ -1,5 +1,5 @@
 # Yorkshire**Digital**
-
+[![Build Status](https://travis-ci.org/YorkshireDigital/yorkshiredigital.com.svg?branch=master)](https://travis-ci.org/YorkshireDigital/yorkshiredigital.com) [![Circle CI](https://circleci.com/gh/YorkshireDigital/yorkshiredigital.com.svg?style=svg)](https://circleci.com/gh/YorkshireDigital/yorkshiredigital.com) [![Coverage Status](https://coveralls.io/repos/github/YorkshireDigital/yorkshiredigital.com/badge.svg?branch=master)](https://coveralls.io/github/YorkshireDigital/yorkshiredigital.com?branch=master)
 
 Bringing Yorkshire's digital community together.
 
