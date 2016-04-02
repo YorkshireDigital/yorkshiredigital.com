@@ -68,7 +68,7 @@ function _setupRoutes(server) {
           <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
   			</head>
   			<body>
-  				<div id='react-root'>${reactString}</div>
+  				<div id='react-root'><div>${reactString}</div></div>
   				<script>
   					window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
   					window.__UA__ = ${JSON.stringify(request.headers['user-agent'])}
