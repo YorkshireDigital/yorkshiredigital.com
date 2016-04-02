@@ -30,7 +30,6 @@ function _setupRoutes(server) {
   server.route(controllers.config);
 
   server.ext('onRequest', (request, reply) => {
-    console.log('COOKIE', request.headers.cookie);
     cookie.setRawCookie(request.headers.cookie);
     return reply.continue();
   });
